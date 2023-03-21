@@ -1,0 +1,73 @@
+
+<nav
+  class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+>
+  <div class="justify-between mx-auto">
+    <div *ngFor="let u of usuario">
+      <div *ngIf="u.rol_id == 1 || u.rol_id == 2">
+        <a
+          routerLink="/ingredientes"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Ingredientes
+        </a>
+        <a
+          routerLink="/chef"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Chefs
+        </a>
+        <a
+          routerLink="/recetas"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Recetas
+        </a>
+      </div>
+    </div>
+    <div *ngFor="let u of usuario">
+      <div *ngIf="u.rol_id == 1">
+        <a
+          routerLink="/mapas"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Mapas
+        </a>
+        <a
+          routerLink="/objeto"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Objetos
+        </a>
+        <a
+          routerLink="/monstruos"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Monstruos
+        </a>
+        <a
+          routerLink="/zonaObjetos"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+        >
+          Objetos en zonas
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+</nav>
+<router-outlet></router-outlet>

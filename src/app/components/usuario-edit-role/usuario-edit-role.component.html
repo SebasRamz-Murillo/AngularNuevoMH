@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="text-center">
+  <h1 class="text-3xl pb-10">Modificar Rol Usuario</h1>
+</div>
+<div class="shadow-2xl" style="width: 50%; margin: auto">
+  <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+    <input type="text" formControlName="id" hidden="true" />
+    <div class="mb-6" style="width: 50%; margin: auto">
+      <label
+        for="rol_id"
+        d
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Select an option</label
+      >
+      <select
+        id="rol_id"
+        formControlName="rol_id"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      >
+        <option value="1">Administrador</option>
+        <option value="2">Usuario</option>
+        <option value="3">Invitado</option>
+      </select>
+
+      <p
+        *ngIf="form.get('rol_id')!.invalid && form.get('rol_id')!.touched"
+        class="text-red-500 text-xs italic"
+      >
+        El rol es obligatorio
+      </p>
+    </div>
+    <div
+      class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
+      style="width: 55%; margin: auto"
+    >
+      <button
+        *ngIf="!form.invalid"
+        type="submit" routerLink="/usuarios" routerLinkActive="active" ariaCurrentWhenActive="page"
+        class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        [disabled]="form.invalid"
+      >
+        Guardar Cambios
+      </button>
+      <button
+        *ngIf="form.invalid"
+        type="submit"
+        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+        [disabled]="form.invalid"
+      >
+        Completa los campos
+      </button>
+      <button>
+        <a
+          routerLink="/usuarios"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          >Cancelar</a
+        >
+      </button>
+    </div>
+  </form>
+</div>

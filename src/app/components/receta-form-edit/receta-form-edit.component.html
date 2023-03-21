@@ -1,0 +1,137 @@
+<app-header></app-header>
+
+<!-- component -->
+<div
+  class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"
+>
+  <div class="relative py-3 sm:w-96 mx-auto text-center">
+    <span class="text-2xl font-light">Modificar Recetas</span>
+    <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+      <div class="h-2 bg-purple-400 rounded-t-md"></div>
+      <div class="px-8 py-6">
+        <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+          <h1 class="text-3xl text-center">Modificar Receta</h1>
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="nombre"
+              class="block mb text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              formControlName="nombre"
+              id="nombre"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Nuez"
+              required
+            />
+            <p
+              *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
+              class="text-red-500 text-xs italic"
+            >
+              El nombre es obligatorio
+            </p>
+          </div>
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="chef"
+              d
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Selecciona el chef</label
+            >
+            <select
+              id="chef"
+              formControlName="chef"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option *ngFor="let c of chef" value="{{ c.id }}">
+                {{ c.nombre }}
+              </option>
+            </select>
+
+            <p
+              *ngIf="form.get('chef')!.invalid && form.get('chef')!.touched"
+              class="text-red-500 text-xs italic"
+            >
+              EL chef es obligatorio
+            </p>
+          </div>
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="preparacion"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Preparacion</label
+            >
+            <input
+              type="text"
+              for="preparacion"
+              formControlName="preparacion"
+              id="edad"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Cocinar durante 10 minutos...."
+              required
+            />
+            <p
+              *ngIf="
+                form.get('preparacion')!.invalid &&
+                form.get('preparacion')!.touched
+              "
+              class="text-red-500 text-xs italic"
+            >
+              La preparacion es obligatoria
+            </p>
+          </div>
+
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="duracion"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Duracion</label
+            >
+            <input
+              type="text"
+              for="duracion"
+              formControlName="duracion"
+              id="edad"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="00:10:00"
+              required
+            />
+            <p
+              *ngIf="
+                form.get('duracion')!.invalid && form.get('duracion')!.touched
+              "
+              class="text-red-500 text-xs italic"
+            >
+              La duracion es obligatoria
+            </p>
+          </div>
+
+          <div id="button" class="flex flex-col w-full my-5">
+            <button
+              routerLink="/recetas"
+              routerLinkActive="active"
+              ariaCurrentWhenActive="page"
+              *ngIf="!form.invalid"
+              type="submit"
+              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              data-modal-hide="agregrChef"
+              [disabled]="form.invalid"
+            >
+              Agregar Ingrediente
+            </button>
+            <button
+              *ngIf="form.invalid"
+              type="submit"
+              class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+              data-modal-hide="agregrChef"
+              [disabled]="form.invalid"
+            >
+              Completa los campos
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

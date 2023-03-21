@@ -1,0 +1,177 @@
+<!-- Container -->
+<div class="flex flex-col h-screen bg-gray-100">
+  <!-- Auth Card Container -->
+  <div class="grid place-items-center mx-2 my-20 sm:my-auto">
+    <!-- Auth Card -->
+    <div
+      class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 sm:px-10 sm:py-6 bg-white rounded-lg shadow-md lg:shadow-lg"
+    >
+      <!-- Card Title -->
+      <h2 class="text-center font-semibold text-3xl lg:text-4xl text-gray-800">
+        Registro
+      </h2>
+
+      <form class="mt-2" [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+        <!-- Email Input -->
+        <label
+          for="email"
+          class="block text-xs font-semibold text-gray-600 uppercase"
+          >E-mail</label
+        >
+        <input
+          id="email"
+          type="email"
+          name="email"
+          formControlName="email"
+          placeholder="e-mail address"
+          autocomplete="email"
+          class="block w-full py-3 px-1 mt-2 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="form.get('email')!.invalid && form.get('email')!.touched"
+          class="text-red-500 text-xs italic"
+        >
+          El Email es obligatorio
+        </p>
+
+        <!-- Password Input -->
+        <label
+          for="password"
+          class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+          >Password</label
+        >
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="password"
+          formControlName="password"
+          autocomplete="current-password"
+          class="block w-full py-3 px-1 mt-2 mb-4 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="form.get('password')!.invalid && form.get('password')!.touched"
+          class="text-red-500 text-xs italic"
+        >
+          La password es obligatorio y debe ser mayor a 9 caracteres
+        </p>
+        <!-- Nombre Input -->
+        <label
+          for="password"
+          class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+          >Nombre</label
+        >
+        <input
+          id="name"
+          type="name"
+          name="name"
+          placeholder="name"
+          formControlName="name"
+          autocomplete="current-name"
+          class="block w-full py-3 px-1 mt-2 mb-4 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="form.get('name')!.invalid && form.get('name')!.touched"
+          class="text-red-500 text-xs italic"
+        >
+          El nombre es obligatorio
+        </p>
+        <!-- Apelldio paterno Input -->
+        <label
+          for="password"
+          class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+          >Apelldio paterno</label
+        >
+        <input
+          id="ap_paterno"
+          type="ap_paterno"
+          name="ap_paterno"
+          placeholder="ap_paterno"
+          formControlName="ap_paterno"
+          autocomplete="current-ap_paterno"
+          class="block w-full py-3 px-1 mt-2 mb-4 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="
+            form.get('ap_paterno')!.invalid && form.get('ap_paterno')!.touched
+          "
+          class="text-red-500 text-xs italic"
+        >
+          El Apellido paterno es obligatorio
+        </p>
+        <!-- Apelldio materno Input -->
+        <label
+          for="password"
+          class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+          >Apelldio materno</label
+        >
+        <input
+          id="ap_materno"
+          type="ap_materno"
+          name="ap_materno"
+          placeholder="ap_materno"
+          formControlName="ap_materno"
+          autocomplete="current-ap_materno"
+          class="block w-full py-3 px-1 mt-2 mb-4 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="
+            form.get('ap_materno')!.invalid && form.get('ap_materno')!.touched
+          "
+          class="text-red-500 text-xs italic"
+        >
+          El Apellido materno es obligatorio
+        </p>
+        <!-- Apelldio telefono Input -->
+        <label
+          for="password"
+          class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
+          >Telefono</label
+        >
+        <input
+          id="telefono"
+          type="telefono"
+          name="telefono"
+          placeholder="telefono"
+          formControlName="telefono"
+          autocomplete="current-telefono"
+          class="block w-full py-3 px-1 mt-2 mb-4 text-gray-800 appearance-none border-b-2 border-gray-100 focus:text-gray-500 focus:outline-none focus:border-gray-200"
+          required
+        />
+        <p
+          *ngIf="form.get('telefono')!.invalid && form.get('telefono')!.touched"
+          class="text-red-500 text-xs italic"
+        >
+          El Telefono es obligatorio
+        </p>
+        <!-- Auth Buttton -->
+        <button
+          *ngIf="form.valid && form.get('password')?.value.length >= 9 "
+          type="submit"
+          class="w-full py-3 mt-10 bg-green-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-green-700 hover:shadow-none"
+        >
+          Enviar
+        </button>
+        <button routerLink="/correo" routerLinkActive="active" ariaCurrentWhenActive="page"
+          type="submit" disabled="true"
+          *ngIf="!form.valid"
+          class="w-full py-3 mt-5 bg-red-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-red-700 hover:shadow-none"
+        >
+          Enviar
+        </button>
+        <button
+
+          type="button"
+          class="w-full py-3 mt-5 bg-gray-800 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-gray-700 hover:shadow-none"
+        >
+          Regresar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

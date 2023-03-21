@@ -1,0 +1,169 @@
+<app-header></app-header>
+
+<!-- component -->
+<div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+  <div class="relative py-3 sm:w-96 mx-auto text-center">
+    <span class="text-2xl font-light ">Modificar Chef</span>
+    <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+      <div class="h-2 bg-purple-400 rounded-t-md"></div>
+      <div class="px-8 py-6 ">
+
+
+
+        <form [formGroup]="form" (ngSubmit)="OnSubmit(form.value)">
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="nombre"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nombre</label
+            >
+            <input
+              type="text"
+              formControlName="nombre"
+              id="nombre"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Abelardo"
+              required
+            />
+            <p
+              *ngIf="form.get('nombre')!.invalid && form.get('nombre')!.touched"
+              class="text-red-500 text-xs italic"
+            >
+              El nombre es obligatorio
+            </p>
+          </div>
+
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="app_paterno"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Apellido Paterno</label
+            >
+            <input
+              type="text"
+              formControlName="ap_paterno"
+              id="app_paterno"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Garcia"
+              required
+            />
+            <p
+              *ngIf="
+                form.get('ap_paterno')!.invalid && form.get('ap_paterno')!.touched
+              "
+              class="text-red-500 text-xs italic"
+            >
+              El Apellido Maternoes obligatorio
+            </p>
+          </div>
+
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="app_materno"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Apellido Materno</label
+            >
+            <input
+              type="text"
+              formControlName="ap_materno"
+              id="app_materno"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Reyes"
+              required
+            />
+            <p
+              *ngIf="
+                form.get('ap_materno')!.invalid && form.get('ap_materno')!.touched
+              "
+              class="text-red-500 text-xs italic"
+            >
+              El Apellido Maternoes obligatorio
+            </p>
+          </div>
+
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="nacionalidad"
+              d
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Select la nacionalidad</label
+            >
+            <select
+              id="nacionalidad"
+              formControlName="nacionalidad"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected>Mexicano</option>
+              <option value="Americano">Americano</option>
+              <option value="Italiano">Italiano</option>
+              <option value="Frances">Frances</option>
+              <option value="Español">Español</option>
+              <option value="Aleman">Aleman</option>
+              <option value="Chino">Chino</option>
+              <option value="Japones">Japones</option>
+              <option value="Ruso">Ruso</option>
+              <option value="Ingles">Ingles</option>
+              <option value="Otro">Otro</option>
+            </select>
+
+            <p
+              *ngIf="
+                form.get('nacionalidad')!.invalid && form.get('nacionalidad')!.touched
+              "
+              class="text-red-500 text-xs italic"
+            >
+              La nacionalidad es obligatorio
+            </p>
+          </div>
+
+          <div id="input" class="flex flex-col w-full my-5">
+            <label
+              for="edad"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Edad</label
+            >
+            <input
+              type="number"
+              for="edad"
+              formControlName="edad"
+              id="edad"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="20"
+              max="100"
+              min="10"
+              required
+            />
+            <p
+              *ngIf="form.get('edad')!.invalid && form.get('edad')!.touched"
+              class="text-red-500 text-xs italic"
+            >
+              La edad es obligatoria y debe ser mayor a 10 y menor a 100
+            </p>
+          </div>
+
+          <div id="button" class="flex flex-col w-full my-5">
+            <button routerLink="/chef" routerLinkActive="active" ariaCurrentWhenActive="page"
+              *ngIf="!form.invalid"
+              type="submit"
+              class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+              data-modal-hide="agregrChef"
+              [disabled]="form.invalid"
+            >
+              Modificar Chef
+            </button>
+            <button
+              *ngIf="form.invalid"
+              type="submit"
+              class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+              data-modal-hide="agregrChef"
+              [disabled]="form.invalid"
+            >
+              Completa los campos
+            </button>
+
+          </div>
+        </form>
+      </div>
+
+  </div>
+</div>
