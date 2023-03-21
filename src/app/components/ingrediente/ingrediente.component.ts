@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Ingrediente } from 'src/app/models/ingrediente.model';
+import { Ingrediente } from 'src/app/Models/ingrediente.model';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { LoginService } from 'src/app/services/login.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

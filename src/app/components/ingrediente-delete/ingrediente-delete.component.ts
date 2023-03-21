@@ -3,7 +3,7 @@ import { ActivatedRoute, Route, ParamMap } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Ingrediente } from 'src/app/models/ingrediente.model';
+import { Ingrediente } from 'src/app/Models/ingrediente.model';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';

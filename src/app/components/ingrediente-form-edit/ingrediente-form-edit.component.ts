@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Route, ParamMap } from '@angular/router';
-import { Ingrediente } from 'src/app/models/ingrediente.model';
+import { Ingrediente } from 'src/app/Models/ingrediente.model';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ingrediente-form-edit',
@@ -14,17 +14,17 @@ import { Location } from '@angular/common';
   styleUrls: ['./ingrediente-form-edit.component.css']
 })
 
-export class IngredienteFormEditComponent {
-  form: FormGroup;
-  suscription?: Subscription;
-  id: number = this.route.snapshot.params['id'];
+export class IngredienteFormEditComponent implements OnInit {
+  formulario: FormGroup;
   ingrediente?: Ingrediente;
+  suscription?: Subscription;
+  id: number = 0;
 
   constructor(private route: ActivatedRoute,
     private ingredienteService: IngredienteService,
-    private location: Location,
+    private router: Router,
     private fb: FormBuilder) {
-    this.form = this.fb.group({
+    this.formulario = this.fb.group({
       id: ['', Validators.required],
       nombre: ['', Validators.required],
       tipo: ['', Validators.required],
@@ -33,16 +33,20 @@ export class IngredienteFormEditComponent {
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
     this.getOneIngrediente(this.id);
     this.suscription = this.ingredienteService.get_refresh$().subscribe(() => {
       this.getOneIngrediente(this.id);
     });
+    console.log("El id es: "+this.id);
   }
+
 
   getOneIngrediente(id: number) {
     this.ingredienteService.getOneIngrediente(id).subscribe((data: Ingrediente) => {
       this.ingrediente = data;
-      this.form.patchValue({
+      console.log("El ingrediente es: "+this.ingrediente);
+      this.formulario.patchValue({
         id: this.ingrediente?.id,
         nombre: this.ingrediente?.nombre,
         tipo: this.ingrediente?.tipo,
@@ -52,7 +56,7 @@ export class IngredienteFormEditComponent {
   }
   OnSubmit(values: Ingrediente) {
     this.ingredienteService.updateIngrediente(values).subscribe();
-    this.form.reset();
-    this.location.back();
+    this.formulario.reset();
+    this.router.navigate(['/ingredientes']);
   }
 }

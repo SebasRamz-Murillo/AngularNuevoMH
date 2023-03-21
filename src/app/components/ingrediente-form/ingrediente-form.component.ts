@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
-import { Ingrediente } from 'src/app/models/ingrediente.model';
+import { Ingrediente } from 'src/app/Models/ingrediente.model';
 import { Location } from '@angular/common';
 
 @Component({
